@@ -1,5 +1,20 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom';
-import App from './App';
+import {createStore, combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
+import { Provider } from 'react-redux';
+import ContactForm from './ContactForm';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const reducers = {
+  // ... your other reducers here ...
+  form: formReducer     // <---- Mounted at 'form'. See note below.
+}
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ContactForm />
+  </Provider>,
+  document.getElementById('root')
+)
