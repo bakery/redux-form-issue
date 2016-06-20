@@ -12,9 +12,11 @@ const reducers = {
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
 
+const onSubmit = data => alert(JSON.stringify(data, 0, 2))
+
 ReactDOM.render(
   <Provider store={store}>
-    <ContactForm />
+    <ContactForm onSubmit={onSubmit}/>
   </Provider>,
   document.getElementById('root')
 )
